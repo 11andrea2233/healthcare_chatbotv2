@@ -16,7 +16,6 @@ import streamlit as st
 import warnings
 from streamlit_option_menu import option_menu
 from streamlit_extras.mention import mention
-import requests
 
 warnings.filterwarnings("ignore")
 
@@ -39,6 +38,9 @@ with st.sidebar:
 
 if 'messages' not in st.session_state:
     st.session_state.messages = []
+    
+if 'chat_session' not in st.session_state:
+    st.session_state.chat_session = None
 
 # Options: Home
 if options == "Home":
@@ -70,12 +72,17 @@ elif options == "About Me":
     st.text("Connect with me on LinkedIn 😊 [Andrea Arana](https://www.linkedin.com/in/andrea-a-732769168/)")
 
 elif options == "Healthcare AI Chabot":
-    st.title("How can I assist you today?")
-    user_question = st.text_input("What is my medication? (Ask me anything about your healthcare)")
+    dataframed = pd.read_csv('https://raw.githubusercontent.com/11andrea2233/healthcare_chatbotv2/refs/heads/main/Database.csv')
+    dataframed['combined'] = dataframed.apply(lambda row : ' '.join(row.values.astype(str)), axis = 1)
+    documents = dataframed['combined'].tolist()
+    embeddings = [get_embedding(doc, engine = "text-embedding-3-small") for doc in documents]
+    embedding_dim = len(embeddings[0])
+    embeddings_np = np.array(embeddings).astype('float32')
+    index = faiss.IndexFlatL2(embedding_dim)
+    index.add(embeddings_np)
+        
     
-    if st.button("Submit"):
-        if user_question:
-            System_Prompt = """
+    System_Prompt = """
             Role:
                 You are an AI receptionist working for a healthcare provider. Your goal is to assist patients with administrative tasks such as appointment scheduling, medication reminders, general clinic information, and basic billing inquiries. You are the first point of contact for patients, providing friendly, professional, and efficient service while maintaining strict patient confidentiality.
                 Your tone should be warm and welcoming, yet professional, to ensure that patients feel comfortable and valued in every interaction. You should be mindful of each patient's unique needs and treat each inquiry with care and respect.
@@ -143,16 +150,34 @@ elif options == "Healthcare AI Chabot":
                 AI Receptionist: "Our clinic opens at 9 AM on Saturdays and closes at 3 PM. Is there anything else I can help you with?"
             
             """
+    def initialize_conversation(prompt):
+        if 'messagess' not in st.session_state:
+            st.session_state.messagess = []
+            st.session_state.messagess.append({"role": "system", "content": System_Prompt})
+            chat =  openai.ChatCompletion.create(model = "gpt-4o-mini", messages = st.session_state.messagess, temperature=0.5, max_tokens=1500, top_p=1, frequency_penalty=0, presence_penalty=0)
+            response = chat.choices[0].message.content
+            st.session_state.messagess.append({"role": "assistant", "content": response})
 
-            struct = [{'role': 'system', 'content': System_Prompt}]
-            struct.append({"role": "user", "content": user_question})
+    initialize_conversation(System_Prompt)
 
-            try:
-                chat = openai.ChatCompletion.create(model="gpt-4", messages=struct)
-                response = chat.choices[0].message.content
-                st.success("Here's what Sheldon says:")
-                st.write(response)
-            except Exception as e:
-                st.error(f"I don't understand you're question. Please try again. {str(e)}")
-        else:
-            st.warning("Please enter a question before submitting!")
+    for messages in st.session_state.messagess :
+        if messages['role'] == 'system' : continue 
+        else :
+            with st.chat_message(messages["role"]):
+                st.markdown(messages["content"])
+
+    if user_message := st.chat_input("Say something"):
+        with st.chat_message("user"):
+            st.markdown(user_message)
+        query_embedding = get_embedding(user_message, engine='text-embedding-3-small')
+        query_embedding_np = np.array([query_embedding]).astype('float32')
+        _, indices = index.search(query_embedding_np, 2)
+        retrieved_docs = [documents[i] for i in indices[0]]
+        context = ' '.join(retrieved_docs)
+        structured_prompt = f"Context:\n{context}\n\nQuery:\n{user_message}\n\nResponse:"
+        chat =  openai.ChatCompletion.create(model = "gpt-4o-mini", messages = st.session_state.messagess + [{"role": "user", "content": structured_prompt}], temperature=0.5, max_tokens=1500, top_p=1, frequency_penalty=0, presence_penalty=0)
+        st.session_state.messagess.append({"role": "user", "content": user_message})
+        response = chat.choices[0].message.content
+        with st.chat_message("assistant"):
+            st.markdown(response)
+        st.session_state.messagess.append({"role": "assistant", "content": response})

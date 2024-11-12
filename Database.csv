@@ -1,0 +1,21 @@
+﻿Patient ID,First Name,Last Name,DOB,Gender,Address,Phone Number,Emergency Contact,Smoking Status,Alcohol Consumption,Exercise Habits,Condition(s),Allergy,Medications,BP (mmHg),BMI,Last Visit,Diagnosis Code,Treatment,Insurance Provider,Amount Billed
+P0001,John,Doe,2/14/1975,M,ZIP 12345,555-1234,Jane Doe,Non-Smoker,Moderate,Regular (3x/wk),Hypertension,Penicillin,Atenolol 50mg,130/85,28,11/1/2024,I10,Blood Pressure Check,HealthCare Inc,$150 
+P0002,Sarah,Lee,7/20/1982,F,ZIP 67890,555-5678,Mike Lee,Smoker,Heavy,Infrequent,Diabetes Type 2,Latex,Metformin 500mg,140/90,32,10/25/2024,E11,Diabetes Mgmt,Wellness Plan,$200 
+P0003,David,Kim,3/15/1990,M,ZIP 54321,555-9012,Emily Kim,Non-Smoker,None,Regular (5x/wk),"Asthma, High Cholesterol",None,Statins 10mg,120/80,26,10/15/2024,E78.5,Cholesterol Mgmt,Health Plus,$120 
+P0004,Maria,Perez,12/30/1967,F,ZIP 23456,555-3456,Alex Perez,Ex-Smoker,Light,Moderate (2x/wk),Osteoarthritis,NSAIDs,Ibuprofen 200mg,135/85,29,10/30/2024,M19.90,Joint Pain Mgmt,SeniorCare,$180 
+P0005,Alice,Wong,1/5/2002,F,ZIP 78901,555-6789,Nancy Wong,Non-Smoker,None,Regular (4x/wk),None,None,None,110/70,22,11/5/2024,Z00.00,General Checkup,Youth Health,$80 
+P0006,Michael,Brown,4/12/1985,M,ZIP 11223,555-1010,Lisa Brown,Smoker,Moderate,Infrequent,"Hypertension, Diabetes",Sulfa,Lisinopril 10mg,150/95,30,11/2/2024,"E11, I10",Chronic Care Mgmt,Medicare,$250 
+P0007,Emma,Smith,8/30/1999,F,ZIP 44556,555-1111,Oliver Smith,Non-Smoker,Light,Regular (2x/wk),Migraine,Aspirin,Sumatriptan 50mg,120/75,24,10/29/2024,G43.9,Migraine Mgmt,HealthFirst,$130 
+P0008,Robert,Davis,9/25/1978,M,ZIP 66778,555-2222,Ann Davis,Ex-Smoker,Moderate,Moderate (3x/wk),COPD,None,Albuterol Inhaler,130/80,29,11/6/2024,J44.9,Respiratory Mgmt,CarePlus,$175 
+P0009,Chloe,White,3/10/1987,F,ZIP 33445,555-3333,Tom White,Non-Smoker,Light,Regular (3x/wk),Depression,None,Sertraline 100mg,115/70,25,11/4/2024,F32.9,Mental Health,Wellness Plan,$150 
+P0010,Ethan,Hall,6/15/2000,M,ZIP 55667,555-4444,Mia Hall,Non-Smoker,None,Regular (4x/wk),None,None,None,110/70,23,11/1/2024,Z00.00,General Checkup,Health Plus,$90 
+P0011,Sofia,Moore,1/25/1995,F,ZIP 22334,555-5555,John Moore,Smoker,Heavy,Infrequent,High Cholesterol,NSAIDs,Atorvastatin 20mg,145/95,30,10/28/2024,E78.5,Cholesterol Mgmt,Medicare,$160 
+P0012,Jacob,Taylor,11/5/1964,M,ZIP 99876,555-6666,Sara Taylor,Ex-Smoker,Light,Moderate (2x/wk),Coronary Artery Disease,Aspirin,Aspirin 81mg,138/85,29,10/20/2024,I25.10,Cardiac Care,SeniorCare,$200 
+P0013,Olivia,Anderson,10/22/1988,F,ZIP 33557,555-7777,Liam Anderson,Non-Smoker,Moderate,Regular (3x/wk),Anxiety,None,Alprazolam 0.5mg,115/72,24,10/15/2024,F41.1,Mental Health,Wellness Plan,$140 
+P0014,Daniel,Thompson,5/12/1971,M,ZIP 44567,555-8888,Chloe Thompson,Smoker,Heavy,Infrequent,"Hypertension, Arthritis",NSAIDs,Amlodipine 5mg,145/92,31,10/18/2024,"I10, M19.90",Chronic Care Mgmt,HealthCare Inc,$210 
+P0015,Mia,Clark,7/1/1992,F,ZIP 66789,555-9999,Noah Clark,Non-Smoker,None,Regular (5x/wk),None,None,None,110/68,22,11/5/2024,Z00.00,General Checkup,Health First,$80 
+P0016,Elijah,Rodriguez,2/2/1984,M,ZIP 55677,555-0000,Isabella Rodriguez,Ex-Smoker,Moderate,Moderate (3x/wk),"Asthma, Obesity",None,Montelukast 10mg,135/85,35,10/20/2024,"J45.909, E66.9",Respiratory Mgmt,CarePlus,$180 
+P0017,Lily,Martinez,12/11/1973,F,ZIP 99877,555-1212,Max Martinez,Non-Smoker,Light,Regular (2x/wk),Hypertension,None,Lisinopril 10mg,130/85,27,11/6/2024,I10,Blood Pressure Check,Medicare,$160 
+P0018,Samuel,Jackson,9/18/1991,M,ZIP 33466,555-1313,Emma Jackson,Smoker,Heavy,Infrequent,Type 2 Diabetes,None,Glipizide 5mg,150/90,33,10/25/2024,E11,Diabetes Mgmt,HealthCare Inc,$210 
+P0019,Ava,Garcia,6/6/1986,F,ZIP 12346,555-1414,Lucas Garcia,Non-Smoker,None,Regular (4x/wk),High Cholesterol,None,Atorvastatin 20mg,125/80,27,10/28/2024,E78.5,Cholesterol Mgmt,Wellness Plan,$140 
+P0020,Noah,Hernandez,4/25/1970,M,ZIP 66778,555-1515,Sophia Hernandez,Ex-Smoker,Light,Moderate (2x/wk),Coronary Artery Disease,Aspirin,Aspirin 81mg,138/88,30,10/18/2024,I25.10,Cardiac Care,Medicare,$200 

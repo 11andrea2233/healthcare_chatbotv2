@@ -1,0 +1,13 @@
+openai==0.28.1
+tiktoken==0.6.0
+langchain==0.1.20
+chromadb==0.5.0
+streamlit
+streamlit_option_menu
+streamlit_extras
+faiss-cpu
+plotly
+openpyxl
+langchain_community
+scipy
+scikit-learn
